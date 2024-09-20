@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2>Create a New Event</h2>
+        <form method="POST" action="{{ url_for('create_event') }}">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                <label for="title">{{ form.title.label }}</label>
+                {{ form.title(class="form-control") }}
+            </div>
+            <div class="form-group">
+                <label for="description">{{ form.description.label }}</label>
+                {{ form.description(class="form-control") }}
+            </div>
+            <div class="form-group">
+                <label for="start_date">{{ form.start_date.label }}</label>
+                {{ form.start_date(class="form-control") }}
+            </div>
+            <div class="form-group">
+                <label for="end_date">{{ form.end_date.label }}</label>
+                {{ form.end_date(class="form-control") }}
+            </div>
+            <div class="form-group">
+                <label for="category">{{ form.category.label }}</label>
+                {{ form.category(class="form-control") }}
+            </div>
+            <div class="form-group">
+                <label for="location">{{ form.location.label }}</label>
+                {{ form.location(class="form-control") }}
+            </div>
+            <button type="submit" class="btn btn-primary">Create Event</button>
+        </form>
+    </div>
+{% endblock %}
+

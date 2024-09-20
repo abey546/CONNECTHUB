@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2>{{ current_user.username }}'s Profile</h2>
+    
+    <div class="row">
+        <div class="col-md-4">
+            {% if current_user.profile_picture %}
+            <img src="{{ url_for('static', filename='profile_pics/' + current_user.profile_picture) }}" class="img-thumbnail" alt="Profile Picture">
+            {% else %}
+            <img src="{{ url_for('static', filename='profile_pics/default.png') }}" class="img-thumbnail" alt="Default Profile Picture">
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <h4>Bio</h4>
+            <p>{{ current_user.bio }}</p>
+
+            <h4>Website</h4>
+            <p><a href="{{ current_user.website_link }}" target="_blank">{{ current_user.website_link }}</a></p>
+
+            <h4>Contact Email</h4>
+            <p>{{ current_user.contact_email }}</p>
+
+            <a href="{{ url_for('update_profile') }}" class="btn btn-primary mt-3">Edit Profile</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

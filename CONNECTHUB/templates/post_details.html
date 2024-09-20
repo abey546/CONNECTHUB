@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Post Details</h1>
+
+<div class="mb-4">
+    <h5>{{ post.author.username }} <small class="text-muted">{{ post.timestamp.strftime('%Y-%m-%d %H:%M') }}</small></h5>
+    <p>{{ post.content }}</p>
+    <form method="POST" action="{{ url_for('like_post', post_id=post.id) }}" class="d-inline">
+        <button type="submit" class="btn btn-link">{{ 'Unlike' if current_user in post.liked_by else 'Like' }}</button>
+    </form>
+</div>
+
+<hr>
+
+<h3>Comments</h3>
+<div class="list-group">
+    {% for comment in post.comments %}
+    <h6>{{ comment.author.username }} 
+        <small class="text-muted">{{ comment.timestamp.strftime('%Y-%m-%d %H:%M') }}</small>
+    </h6>
+    <p>{{ comment.content }}</p>
+{% endfor %}
+
+</div>
+
+<hr>
+
+<h3>Add a Comment</h3>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+        {{ form.content.label(class="form-label") }}
+        {{ form.content(class="form-control", rows=3) }}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}
+

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h2>{{ event.title }}</h2>
+                <p><strong>Organizer:</strong> {{ event.organizer.username }}</p>
+                <p><strong>Start Date:</strong> {{ event.start_date.strftime('%Y-%m-%d %H:%M') }}</p>
+                <p><strong>End Date:</strong> {{ event.end_date.strftime('%Y-%m-%d %H:%M') }}</p>
+                <p><strong>Location:</strong> {{ event.location.name }}</p>
+                <p><strong>Category:</strong> {{ event.category.name }}</p>
+                <hr>
+                <p>{{ event.description }}</p>
+                <a href="{{ url_for('home') }}" class="btn btn-primary mt-3">Back to Events</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

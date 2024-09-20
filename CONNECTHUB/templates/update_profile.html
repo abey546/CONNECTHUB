@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Update Profile</h2>
+    
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        
+        <div class="mb-3">
+            {{ form.first_name.label }} {{ form.first_name(class_="form-control") }}
+        </div>
+        
+        <div class="mb-3">
+            {{ form.last_name.label }} {{ form.last_name(class_="form-control") }}
+        </div>
+        
+        <div class="mb-3">
+            {{ form.bio.label }} {{ form.bio(class_="form-control") }}
+        </div>
+        
+        <div class="mb-3">
+            {{ form.profile_picture.label }} {{ form.profile_picture(class_="form-control") }}
+        </div>
+        
+        <div class="mb-3">
+            {{ form.website_link.label }} {{ form.website_link(class_="form-control") }}
+        </div>
+        
+        <div class="mb-3">
+            {{ form.contact_email.label }} {{ form.contact_email(class_="form-control") }}
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
+{% endblock %}
+
+
